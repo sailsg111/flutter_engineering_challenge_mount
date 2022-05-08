@@ -75,7 +75,10 @@ class _GalleryPageState extends State<GalleryPage> {
             } else
               return Container(
                 width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.only(left: 10, top: 5),
+                padding: EdgeInsets.only(
+                  left: 10,
+                  top: 5,
+                ),
                 child: Column(
                   children: [
                     Row(
@@ -85,7 +88,7 @@ class _GalleryPageState extends State<GalleryPage> {
                         ),
                         SizedBox(width: 14),
                         SizedBox(
-                          width: 220,
+                          width: 190,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -109,21 +112,23 @@ class _GalleryPageState extends State<GalleryPage> {
                             ],
                           ),
                         ),
-                        LikeButton(
-                          size: 30,
-                          isLiked: isLikedList[index],
-                          onTap: (isLiked) async {
-                            setState(() {
-                              isLikedList[index] = !isLiked;
-                              if (isLikedList[index]) {
-                                likeCount++;
-                              } else {
-                                likeCount--;
-                              }
-                            });
-                            isLiked = !isLiked;
-                            return isLiked;
-                          },
+                        Expanded(
+                          child: LikeButton(
+                            size: 30,
+                            isLiked: isLikedList[index],
+                            onTap: (isLiked) async {
+                              setState(() {
+                                isLikedList[index] = !isLiked;
+                                if (isLikedList[index]) {
+                                  likeCount++;
+                                } else {
+                                  likeCount--;
+                                }
+                              });
+                              isLiked = !isLiked;
+                              return isLiked;
+                            },
+                          ),
                         )
                       ],
                     ),
